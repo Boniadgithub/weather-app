@@ -1,12 +1,14 @@
 
 import './App.css'
-import { Button } from '@/components/ui/button'
+import { BrowserRouter } from 'react-router-dom';
+
 
 function App() {
-return<div>my name is Boni
-
-    <Button variant="destructive">clickme</Button>
-</div>
+return(
+<BrowserRouter>
+   
+</BrowserRouter>
+);
 }
 
 export default App
