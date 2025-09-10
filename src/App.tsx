@@ -5,9 +5,19 @@ import Layout from './components/Layout';
 import { ThemeProvider } from './context/theme-provider';
 import Weatherdashboard from './Pages/weather-dashboard';
 import Citypage from './Pages/city-pages';
+import {QueryClient,QueryClientProvider} from "@tanstack/react-query";
+import { ReactQueryDevtools } from '@tanstack/react-query-devtools'
+
+
+const queryClient = new QueryClient();
 
 function App() {
+
+
 return(
+    <QueryClientProvider client={queryClient}>
+      
+    
 <BrowserRouter>
   <ThemeProvider defaultTheme="dark">
     <Layout> 
@@ -18,6 +28,8 @@ return(
     </Layout>
   </ThemeProvider>
 </BrowserRouter>
+<ReactQueryDevtools initialIsOpen={false} />
+</QueryClientProvider>
 );
 }
 
