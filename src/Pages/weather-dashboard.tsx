@@ -1,5 +1,6 @@
 
 
+import WeatherSkeleton from '@/components/loading-skeleton';
 import {Button} from '@/components/ui/button';
 import { useGeolocation } from '@/hooks/use-geolocation';
 import { RefreshCw } from 'lucide-react';
@@ -14,7 +15,7 @@ const Weatherdashboard =()=> {
     }
    };
    if(locationLoading){
-
+      return<WeatherSkeleton/>
    }
    
   return (
@@ -25,16 +26,7 @@ const Weatherdashboard =()=> {
           <RefreshCw className='w-4 h-4'/>
         </Button>
       </div>
-      <div>
-        {locaitonerror && <span className="text-red-500">{locaitonerror}</span>}
-        {coordinates && (
-          <div>
-            <span>Latitude: {coordinates.lat}</span>
-            <br />
-            <span>Longitude: {coordinates.lon}</span>
-          </div>
-        )}
-      </div>
+      
     </div>
   );
 }
