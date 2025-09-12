@@ -7,5 +7,4 @@ export const API_CONFIG={
         lang: 'en',         
         appid: import.meta.env.VITE_WEATHER_API_KEY,
     },
-
 };
