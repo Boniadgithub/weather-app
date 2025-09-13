@@ -3,7 +3,9 @@
 import WeatherSkeleton from '@/components/loading-skeleton';
 import {Button} from '@/components/ui/button';
 import { useGeolocation } from '@/hooks/use-geolocation';
-import { RefreshCw } from 'lucide-react';
+import {  MapPin, RefreshCw } from 'lucide-react';
+import { Alert, AlertDescription, AlertTitle } from '@/components/ui/alert';
+import { AlertTriangle } from 'lucide-react';
 
 const Weatherdashboard =()=> {
   const {coordinates, error:locaitonerror, getLocation,isloading:locationLoading,}=useGeolocation();
@@ -17,6 +19,22 @@ const Weatherdashboard =()=> {
    if(locationLoading){
       return<WeatherSkeleton/>
    }
+   if(locaitonerror){
+    return (
+      <Alert variant='destructive'>
+        <AlertTriangle className='h-4 w-4'/>
+        <AlertTitle>Location Error</AlertTitle>
+        <AlertDescription className='flex flex-col gap-4'>
+          <p>{locaitonerror}</p>
+         <Button onClick={getLocation} variant={"outline"} className='w-fit' >
+          <MapPin className='mr-2 h-4 w-4'/>
+            Enable Location
+         </Button>
+        </AlertDescription>
+      </Alert>
+    );  
+   }
+   
    
   return (
     <div className='space-y-4'>
